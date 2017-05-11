@@ -95,10 +95,17 @@
 			p = pass.val();	
 
 			spinner.show();
-			$.post(server+'login.php',{'email':e,'password':p},function(data,status){
+			//$.post(server+'login.php',{'email':e,'password':p},function(data,status){
+				var status = 'success'
+				var data = 
+				{
+					status:1,
+					email: e,
+					password : p
+				};
 					spinner.hide();
 					if(status=='success'){
-						data = $.parseJSON(data);
+						//data = $.parseJSON(data);
 						if(data['status']==0)
 							showError(data['error']);
 						else{
@@ -110,7 +117,7 @@
 					}else{
 						console.log('failed');
 					}
-			});
+		//	});
 
 
 		}

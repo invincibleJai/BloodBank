@@ -97,11 +97,21 @@
 					window.location="viewprofile.html";
 				}
 				console.log("1");
-				$.post(server+'viewprofile.php',{'email':email, 'password':pass},function(data,status){
-					spinner.hide();
+				//$.post(server+'viewprofile.php',{'email':email, 'password':pass},function(data,status){
+					var status = 'success'
+				var data = {'donor_info':[
+				{
+					name:'Nisha',
+					email: 'nisha@gmail.com',
+					mobile : 9087656820,
+					bloodgroup: 'O+',
+					year: 2016,
+					branch : 'SE'
+				}]};
+					//spinner.hide();
 					if(status=='success')
 					{
-						data=$.parseJSON(data);
+						//data=$.parseJSON(data);
 
 						if(data['success']==0)
 							showError("Please Login");
@@ -111,7 +121,7 @@
 								window.location="viewprofile.html";
 						}
 					}
-				});
+				//});
 			}
 
 			function create(){
@@ -133,11 +143,25 @@
 					showError("Enter Year");
 				} else {
 					spinner.show();
-					$.post(server+'createprofile.php',{'email':email, 'password':pass, 'bloodgroup':bloodgroup, 'branch':branch, 'year':year},function(data,status){
+				var status = 'success'
+				var data = {'donor_info':[
+				{
+					name:'Nisha',
+					email: 'nisha@gmail.com',
+					mobile : 9087656820,
+					bloodgroup: 'O+'
+				},
+				{
+					name:'Raj',
+					email: 'raj@gmail.com',
+					mobile : 9088956820,
+					bloodgroup: 'O+'
+				}]};
+					//$.post(server+'createprofile.php',{'email':email, 'password':pass, 'bloodgroup':bloodgroup, 'branch':branch, 'year':year},function(data,status){
 						spinner.hide();
 						if(status=='success'){
 							console.log(data);
-							data = $.parseJSON(data);
+							//data = $.parseJSON(data);
 							if(data['status']==0)
 								showError(data['error']);
 							else{
@@ -147,7 +171,7 @@
 						}else{
 							console.log('failed');
 						}
-					});
+					//});
 
 				}
 			}

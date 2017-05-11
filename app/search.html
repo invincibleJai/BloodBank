@@ -96,10 +96,24 @@
 		sbranch = localStorage.searchBranch;
 		syear = localStorage.searchYear;
 
-		$.post(server+'listdonors.php',{'bloodgroup':sgroup,'branch':sbranch, 'year':syear},function(data,status){
+		var status = 'success'
+		var data = {'donor_info':[
+				{
+					name:'Nisha',
+					email: 'nisha@gmail.com',
+					mobile : 9087656820,
+					bloodgroup: 'O+'
+				},
+				{
+					name:'Raj',
+					email: 'raj@gmail.com',
+					mobile : 9088956820,
+					bloodgroup: 'O+'
+				}]};
+		//$.post(server+'listdonors.php',{'bloodgroup':sgroup,'branch':sbranch, 'year':syear},function(data,status){
 				spinner.hide();
 				if(status=='success'){
-					data = $.parseJSON(data);
+					//data = $.parseJSON(data);
 					if(data['status']==0){
 						showError('Sorry. There are no contents to display')
 					}else{
@@ -121,7 +135,7 @@
 				}else{
 					showError('Connection Error. Please try again');
 				}
-		});
+		//});
 
 		function showError(data){
 			$('#error').html(data);

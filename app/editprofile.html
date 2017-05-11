@@ -137,7 +137,21 @@ function create(){
 	} else {
 		fill_details();
 			 spin.show();
-			$.post(server+'createprofile.php',{'email':email, 'password':pass, 'bloodgroup':bloodgroup, 'branch':branch, 'year':year},function(data,status){
+			 var status = 'success'
+				var data = {'donor_info':[
+				{
+					name:'Nisha',
+					email: 'nisha@gmail.com',
+					mobile : 9087656820,
+					bloodgroup: 'O+'
+				},
+				{
+					name:'Raj',
+					email: 'raj@gmail.com',
+					mobile : 9088956820,
+					bloodgroup: 'O+'
+				}]};
+			//$.post(server+'createprofile.php',{'email':email, 'password':pass, 'bloodgroup':bloodgroup, 'branch':branch, 'year':year},function(data,status){
 				 spin.hide();
 				if(status=='success'){
 					console.log(data);
@@ -151,7 +165,7 @@ function create(){
 				}else{
 					console.log('failed');
 				}
-			});
+			//});
 
 		}
 	}
